@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -796,79 +795,16 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-
   <!-- Tippy.js for popovers/tooltips -->
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
-  <script>
-    tippy('button', {
-      content(reference) {
-        const id = reference.getAttribute('data-tip');
-        const template = document.getElementById(id);
-        return template.innerHTML;
-      },
-      allowHTML: true,
-      appendTo: 'parent',
-      interactive: true,
-      placement: 'auto-start',
-      theme: 'annotation',
-      trigger: "mouseenter click focusin",
-      arrow: true,
-    });
-  </script>
 
   <!-- SkipTo JavaScript plugin by PayPal Accessibility Team & University of Illinois -->
   <script src="https://cdn.disability.illinois.edu/skipto.min.js"></script>
-  <script>
-    var SkipToConfig = {
-      'settings': {
-        'skipTo': {
-          landmarks: 'main',
-          headings: 'main h1, main h2, main h3',
-          colorTheme: 'default',
-          buttonLabel: 'Skip to content',
-          focusBorderColor: '#5bc2f4',
-          positionLeft: '5%',
-          fontSize: '1rem',
-          attachElement: '#top'
-        }
-      }
-    };
-  </script>
 
-  <!-- Misc -->
-  <script>
-    // Escape key to close all tooltips.
-    document.onkeydown = (evt) => {
-      evt = evt || window.event;
-      let isEscape = false;
-      if ("key" in evt) {
-        isEscape = (evt.key === "Escape" || evt.key === "Esc");
-      } else {
-        isEscape = (evt.keyCode === 27);
-      }
-      if (isEscape) {
-        tippy.hideAll();
-      }
-    };
+  <!-- Scripts -->
+  <script src="assets/main.js"></script>
 
-    // Annotation styling.
-    const tooltips = document.querySelectorAll("[data-tip]");
-    const tooltipHTML = `
-    <i class="far fa-sticky-note" aria-hidden="true"></i>
-    <span class="visually-hidden">Annotation:</span>`;
-    tooltips.forEach(($el) => {
-      $el.insertAdjacentHTML('afterbegin', tooltipHTML);
-      $el.setAttribute('type', 'button');
-
-      // Wrap inline. Tooltip gets appended to this element.
-      const wrapper = document.createElement('div');
-      wrapper.style.display = 'inline-block';
-      $el.parentNode.insertBefore(wrapper, $el);
-      wrapper.appendChild($el);
-    });
-  </script>
 </body>
 
 </html>
